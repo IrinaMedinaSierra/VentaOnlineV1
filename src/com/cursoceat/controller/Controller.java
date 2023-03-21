@@ -1,7 +1,11 @@
 package com.cursoceat.controller;
 
+import java.io.ObjectInputStream.GetField;
 import java.util.ArrayList;
 
+import com.cursoceat.model.Clientes;
+import com.cursoceat.model.Pais;
+import com.cursoceat.model.Pedido;
 import com.cursoceat.model.Productos;
 
 public class Controller {
@@ -21,5 +25,23 @@ public class Controller {
 		System.out.println(p1.toString());
 		miProductos2.restarStock(3);
 		System.out.println(p1.toString());
+		Clientes miCliente1=new Clientes("María", "Pérez", "Calle Oriente ,59", "Tomelloso", Pais.ES, "655555555", "06587596N");
+		System.out.println(miCliente1.toString());
+		
+		Pedido miPedido=new Pedido();
+		System.out.println(miPedido.toString());
+		miPedido.setIdCliente(miCliente1.getIdTemp());
+		miPedido.setIvaPaisCliente(miCliente1.getPaisCliente().getPocentaje());
+		miPedido.setIdProducto(miProductos.getIdProductoTem());
+		miPedido.setCantidadProducto(5);
+		miPedido.setPrecioProducto(miProductos.getPrecioProducto());
+		miPedido.setTotalSinIva(miPedido.getPrecioProducto(),miPedido.getCantidadProducto());
+		miPedido.setTotalPedido(miPedido.getTotalSinIva(),miPedido.getIvaPaisCliente());
+		System.out.println(miPedido.toString());
+		
+		
+		
 	}
 }
+
+
